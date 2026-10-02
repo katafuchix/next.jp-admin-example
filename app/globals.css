@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/*
+ * デジタル庁デザインシステム（DADS）のトークン。
+ * 画面側のクラス名（text-slate-500 など）は変えず、ここで値だけを DADS の色に差し替える。
+ * 段の番号は DADS と一致しない。文字に使う段は、白地と薄灰地（slate-50）の両方で
+ * コントラスト 4.5:1 以上になる DADS の値を当てている。
+ *   primary       → Blue（500 が DADS のキーカラー Blue 900）
+ *   slate / gray  → Solid Gray（400 は placeholder・アイコン用。文字は 500 以上）
+ *   red / emerald / amber / violet → Red / Green / Yellow / Purple
+ * 出典: @digital-go-jp/design-tokens
+ */
+@theme inline {
+  --color-primary-50: #e8f1fe;
+  --color-primary-100: #d9e6ff;
+  --color-primary-200: #c5d7fb;
+  --color-primary-300: #9db7f9;
+  --color-primary-400: #7096f8;
+  --color-primary-500: #0017c1;
+  --color-primary-600: #00118f;
+  --color-primary-700: #00118f;
+  --color-primary-800: #000071;
+  --color-primary-900: #000060;
+  --color-primary-950: #000060;
+
+  --color-slate-50: #f2f2f2;
+  --color-slate-100: #e6e6e6;
+  --color-slate-200: #cccccc;
+  --color-slate-300: #b3b3b3;
+  --color-slate-400: #767676;
+  --color-slate-500: #666666;
+  --color-slate-600: #4d4d4d;
+  --color-slate-700: #333333;
+  --color-slate-800: #1a1a1a;
+  --color-slate-900: #1a1a1a;
+  --color-slate-950: #000000;
+
+  --color-gray-50: #f2f2f2;
+  --color-gray-100: #e6e6e6;
+  --color-gray-200: #cccccc;
+  --color-gray-300: #b3b3b3;
+  --color-gray-400: #767676;
+  --color-gray-500: #666666;
+  --color-gray-600: #4d4d4d;
+  --color-gray-700: #333333;
+  --color-gray-800: #1a1a1a;
+  --color-gray-900: #1a1a1a;
+  --color-gray-950: #000000;
+
+  --color-red-50: #fdeeee;
+  --color-red-100: #ffdada;
+  --color-red-200: #ffbbbb;
+  --color-red-300: #ff9696;
+  --color-red-400: #fe3939;
+  --color-red-500: #ec0000;
+  --color-red-600: #ce0000;
+  --color-red-700: #a90000;
+  --color-red-800: #850000;
+  --color-red-900: #620000;
+  --color-red-950: #620000;
+
+  --color-emerald-50: #e6f5ec;
+  --color-emerald-100: #c2e5d1;
+  --color-emerald-200: #9bd4b5;
+  --color-emerald-300: #71c598;
+  --color-emerald-400: #51b883;
+  --color-emerald-500: #259d63;
+  --color-emerald-600: #197a4b;
+  --color-emerald-700: #115a36;
+  --color-emerald-800: #0c472a;
+  --color-emerald-900: #08351f;
+  --color-emerald-950: #032213;
+
+  --color-amber-50: #fbf5e0;
+  --color-amber-100: #fff0b3;
+  --color-amber-200: #ffe380;
+  --color-amber-300: #ffd43d;
+  --color-amber-400: #ffc700;
+  --color-amber-500: #b78f00;
+  --color-amber-600: #806300;
+  --color-amber-700: #6e5600;
+  --color-amber-800: #604b00;
+  --color-amber-900: #604b00;
+  --color-amber-950: #604b00;
+
+  --color-violet-50: #f1eafa;
+  --color-violet-100: #ecddff;
+  --color-violet-200: #ddc2ff;
+  --color-violet-300: #cda6ff;
+  --color-violet-400: #bb87ff;
+  --color-violet-500: #8843e1;
+  --color-violet-600: #6f23d0;
+  --color-violet-700: #5c10be;
+  --color-violet-800: #41048e;
+  --color-violet-900: #30016c;
+  --color-violet-950: #21004b;
+
+  /* DADS の elevation。枠線のあるカードには影を付けない */
+  --shadow-sm: 0 2px 8px 1px rgba(0, 0, 0, 0.1), 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 12px 2px rgba(0, 0, 0, 0.1), 0 1px 6px 0 rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 6px 20px 4px rgba(0, 0, 0, 0.1), 0 2px 6px 0 rgba(0, 0, 0, 0.3);
+
+  /*
+   * DADS の書体は Noto Sans JP。ビルド時に Google Fonts を取りに行くと本番サーバーの
+   * ビルドが外部に依存するので、端末に入っていれば使い、無ければ OS の和文ゴシックに落とす
+   */
+  --font-sans: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+    "BIZ UDPGothic", "Yu Gothic UI", Meiryo, sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * DADS のフォーカス表示（黒 4px ＋ 黄 2px の二重）。公式が変更不可としているので、
+ * Tailwind のユーティリティより確実に勝つよう、レイヤーの外に置く。
+ */
+:focus-visible {
+  outline: 4px solid #000;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px #ffd43d;
+}
+
+/* autofill リセット */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #1a1a1a;
+}
+
+.text-body {
+  color: #333333;
+}

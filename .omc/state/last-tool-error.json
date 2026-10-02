@@ -1,0 +1,7 @@
+{
+  "tool_name": "Read",
+  "tool_input_preview": "{\"file_path\":\"/Users/momozaki/claude-dev/admin-dashboard/middleware.ts\"}",
+  "error": "File does not exist. Note: your current working directory is /Users/momozaki/claude-dev/admin-dashboard.",
+  "timestamp": "2026-06-21T14:20:46.229Z",
+  "retry_count": 1
+}
