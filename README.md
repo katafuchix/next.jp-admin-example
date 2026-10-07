@@ -1,8 +1,5 @@
-# はぴけん 管理画面（admin-dashboard）
+# 管理画面（admin-dashboard）
 
-はぴけん（健康管理アプリ）の運営者向け管理画面。**単独では動かない** — アプリ本体 + API サーバーである
-[`Shohei2000/care`](https://github.com/Shohei2000/care) リポジトリと対になっており、同じ MongoDB の
-`users` コレクションを共有している。両リポジトリの関係・データフローは
 [`docs/01_アーキテクチャ.md`](docs/01_アーキテクチャ.md) を参照。
 
 ## 技術スタック
